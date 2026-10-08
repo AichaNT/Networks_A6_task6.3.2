@@ -56,7 +56,6 @@ signature = private_key.sign( # params taken from (source)
 )
         
 
-
 # save signatue
 with open('signature.bin', 'wb') as f:
     f.write(signature)
