@@ -28,20 +28,20 @@ with open('data/merchant_data.txt', 'r') as f:
 
 OI = lines[0].strip().split('=', 1)[1]
 
-PIMD = bytes.fromhex(
+PIMD_merchant = bytes.fromhex(
     lines[1].strip().split('=', 1)[1]
 )
 
 
 # merchant hashes OI
-OIMD = hashlib.sha256(
+OIMD_merchant = hashlib.sha256(
     OI.encode()
 ).digest()
 
 
 # merchant reconsruct combined hash (POMD)
 POMD = hashlib.sha256(
-    PIMD + OIMD
+    PIMD_merchant + OIMD_merchant
 ).digest()
 
 
@@ -75,20 +75,20 @@ with open('data/bank_data.txt', 'r') as f:
 
 PI = lines[0].strip().split('=', 1)[1]
 
-OMID = bytes.fromhex(
+OMID_bank = bytes.fromhex(
     lines[1].strip().split('=', 1)[1]
 )
 
 
 # bank hashes PI
-PIMD = hashlib.sha256(
+PIMD_bank = hashlib.sha256(
     PI.encode()
 ).digest()
 
 
 # bank reconsruct combined hash (POMD)
 POMD = hashlib.sha256(
-    PIMD + OIMD
+    PIMD_bank + OMID_bank
 ).digest()
 
 
