@@ -1,0 +1,2 @@
+PI=Pay 100 DKK to MerchantX
+OI=Order #2456: 2 items total 100 DKK
